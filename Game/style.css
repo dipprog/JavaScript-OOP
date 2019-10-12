@@ -2,7 +2,7 @@
 	color: orange;
 }
 .txt {
-	height: 100px;
+	height: 150px;
 }
 .play {
 	align-self: auto;
@@ -10,4 +10,8 @@
 }
 #action {
 	border: none;
+}
+.container {
+	margin: 0 auto;
+	text-align: center;
 }

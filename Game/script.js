@@ -29,10 +29,6 @@ class Player {
 	get weapon() {
 		return this._weapon;
 	}
-	constructor(n) {
-		this.reset();
-		this._name = n;
-	}
 	reset() {
 		// Start / Reset the game
 		this._level = 5;
@@ -40,10 +36,15 @@ class Player {
 		this._weapon = 'Saber';
 		this._health = 5;
 	}
+	constructor(n) {
+		this.reset();
+		this._name = n;
+	}
+
 	getAllInfo() {
 		// Return the status
 		if (parseInt(this._health) === 0) {
-			this._health = this.name + 'Died!';
+			this._health = this.name + ' Died!';
 			return this._health;
 		} else {
 			return (
@@ -62,6 +63,13 @@ class Player {
 			);
 		}
 	}
+
+	getRan() {
+		// Random Number
+		let r = Math.floor(Math.random() * 10) + 1;
+		return r;
+	}
+
 	doBattle(goodGuy, badGuy) {
 		// Determines who takes demage
 		// Use random number generator
@@ -78,39 +86,33 @@ class Player {
 			badGuy.health--;
 			badGuy.level--;
 			goodGuy.level++;
-		}
-		if (attacksByBad > attacksByGood) {
+		} else if (attacksByBad > attacksByGood) {
 			action.value = badGuy.name + ' attacks ' + goodGuy.name;
-			goodGuy.health--;
 			badGuy.health++;
-			badGuy.level++;
+			goodGuy.health--;
 			goodGuy.level--;
+			badGuy.level--;
 		}
-	}
-	getRan() {
-		// Random Number
-		let r = Math.floor(Math.random() * 10) + 1;
-		return r;
 	}
 }
 
 var player1 = new Player('Atrus');
 var player2 = new Player('Gehn');
 
+function status() {
+	let p1 = document.getElementById('p1');
+	p1.value = player1.getAllInfo();
+
+	let p2 = document.getElementById('p2');
+	p2.value = player2.getAllInfo();
+}
+
 function initGame() {
 	player1.reset();
 	player2.reset();
-
 	status();
 }
 function startGame() {
 	player1.doBattle(player1, player2);
 	status();
-}
-function status() {
-	document.getElementById('p1');
-	player1.value = player1.getAllInfo();
-
-	document.getElementById('p2');
-	player2.value = player2.getAllInfo();
 }

@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./lib/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
     <title>JavaScript Game</title>
 </head>
 <body>
-    <div id="ttl">
-        <h1>Sword Battle</h1>
-    </div>   
-
-    <p>Purpose: To demonstrate the use of a JavaScript Class</p>
-    <p>Click Play and then keep hitting Battle until someone dies.</p>
-    <input type="text" id="action" readonly="true" value="Battle action">
-    <div id="status">
-        <textarea id="p1" class="txt"></textarea>
-        <textarea id="p2" class="txt"></textarea>
+    <div class="container">
+        <div id="ttl">
+            <h1>Sword Battle</h1>
+        </div>
+        
+        <p class="h4 text-primary">Purpose: To demonstrate the use of a JavaScript Class</p>
+        <p class="h4 text-info">Click Play and then keep hitting Battle until someone dies.</p>
+        <input type="text" id="action" readonly="true" value="Battle Action" class="h3 text-danger text-center">
+        <div id="status">
+            <textarea id="p1" class="txt border border-info text-secondary"></textarea>
+            <textarea id="p2" class="txt border border-info text-secondary"></textarea>
+        </div>
+        
+        <br>
+        
+        <input type="button" id="binit" class="play btn btn-primary btn-lg" value="Play/Reset" onclick="initGame()">
+        <input type="button" id="bplay" class="play btn btn-primary btn-lg" value="Start Battle" onclick="startGame()">
     </div>
 
-    <br>
-
-    <input type="button" id="binit" class="play" value="Play/Reset" onclick="initGame()">
-    <input type="button" id="bplay" class="play" value="Start Battle" onclick="startGame()">
-
-    <script src="script.js"> </script>
+    <script src="./script.js"> </script>
 </body>
 </html>
